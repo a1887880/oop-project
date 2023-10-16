@@ -8,7 +8,8 @@ class Sheep : public Animal {
         int woolProductionRate; // in Kilograms
     public:
         Sheep(string name);
-        
+        Sheep();
+
         int get_woolProductionRate();
         void set_woolProductionRate(int newRate);
 

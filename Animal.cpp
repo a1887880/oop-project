@@ -1,6 +1,6 @@
 #include "Animal.h"
 
-Animal::Animal(double value, string name, string species, int feedingRequirement) : Commodity(value, 40) {
+Animal::Animal(int value, string name, string species, int feedingRequirement) : Commodity(value, 40) {
     this->name = name;
     this->species = species;
     this->feedingRequirement = feedingRequirement;

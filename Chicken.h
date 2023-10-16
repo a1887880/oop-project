@@ -8,6 +8,7 @@ class Chicken : public Animal {
         int eggProductionRate; // in individual eggs
     public:
         Chicken(string name);
+        Chicken();
 
         int get_eggProductionRate();
         void set_eggProductionRate(int newRate);

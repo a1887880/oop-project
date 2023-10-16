@@ -4,6 +4,7 @@ Employee::Employee(string name) {
     this->name = name;
     payDemand = 100;
 }
+Employee::Employee() : Employee("") {}
 
 string Employee::get_name() {return name;}
 void Employee::set_name(string newName) {name = newName;}

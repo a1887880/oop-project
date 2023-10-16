@@ -8,6 +8,7 @@ class Goat : public Animal {
         int cheeseProductionRate; // in servings 
     public:
         Goat(string name);
+        Goat();
 
         int get_cheeseProductionRate();
         void set_cheeseProductionRate(int newRate);

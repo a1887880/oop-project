@@ -6,8 +6,8 @@ Commodity::Commodity(double value, int maxLifeStage) {
     this->maxLifeStage = maxLifeStage;
 }
 
-double Commodity::get_value() {return value;}
-void Commodity::set_value(double newValue) {value = newValue;}
+int Commodity::get_value() {return value;}
+void Commodity::set_value(int newValue) {value = newValue;}
 
 int Commodity::get_stageOfLife() {return stageOfLife;}
 void Commodity::set_stageOfLife(int newStage) {stageOfLife = newStage;}

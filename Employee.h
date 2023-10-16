@@ -12,6 +12,7 @@ class Employee {
         double payDemand; // daily cost of employeement
     public:
         Employee(string name);
+        Employee();
 
         string get_name();
         void set_name(string newName);

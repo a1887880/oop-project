@@ -9,7 +9,7 @@ class Crop : public Commodity {
         int waterSaturation; // scale from 1 to 10
         int matureStage; // minimum stage crop can be harvested
     public:
-        Crop(double value, string cropType, int matureStage);
+        Crop(int value, string cropType, int matureStage);
 
         string get_cropType();
         void set_cropType(string newCropType);

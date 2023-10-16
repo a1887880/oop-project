@@ -8,14 +8,14 @@ using namespace std;
 
 class Commodity {
     protected:
-        double value;
+        int value;
         int stageOfLife;
         int maxLifeStage;
     public:
         Commodity(double value, int maxLifeStage);
 
-        double get_value();
-        void set_value(double newValue);
+        int get_value();
+        void set_value(int newValue);
 
         int get_stageOfLife();
         void set_stageOfLife(int newStage);

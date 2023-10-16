@@ -11,7 +11,7 @@ class Animal : public Commodity {
         int hungerRating;
 
     public:
-        Animal(double value, string name, string species, int feedingRequirement);
+        Animal(int value, string name, string species, int feedingRequirement);
 
         string get_name();
         void set_name(string newName);

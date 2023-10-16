@@ -8,6 +8,7 @@ class Cow : public Animal {
         int milkProductionRate; // in Litres
     public:
         Cow(string name);
+        Cow();
 
         int get_milkProductionRate();
         void set_milkProductionRate(int newRate);

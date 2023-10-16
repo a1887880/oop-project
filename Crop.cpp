@@ -1,6 +1,6 @@
 #include "Crop.h"
 
-Crop::Crop(double value, string cropType, int matureStage) : Commodity(value, 10) {
+Crop::Crop(int value, string cropType, int matureStage) : Commodity(value, 10) {
     this->cropType = cropType;
     this->waterSaturation = 100;
     this->matureStage = matureStage;

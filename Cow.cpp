@@ -3,6 +3,7 @@
 Cow::Cow(string name) : Animal(1000, name, "Cow", 10) {
     milkProductionRate = 15;
 }
+Cow::Cow() : Cow("") {}
 
 int Cow::get_milkProductionRate() {return milkProductionRate;}
 void Cow::set_milkProductionRate(int newRate) {milkProductionRate = newRate;}
