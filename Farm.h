@@ -40,12 +40,14 @@ class Farm {
         Potato *potatos;
         Watermelon *watermelons;
 
-        Inventory inventory;
-
         Employee *employees;
     public:
+        Inventory inventory;
+
         Farm(string name);
         Farm();
+
+        string get_name();
        
         bool buyLand();
 

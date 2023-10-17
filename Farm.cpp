@@ -37,6 +37,8 @@ Farm::Farm(string name) {
 
 Farm::Farm() : Farm("") {}
 
+string Farm::get_name() {return name;}
+
 bool Farm::buyLand() {
     if (bankAccout > 10000000) {
         landArea += 10000;
@@ -240,18 +242,18 @@ void Farm::summariseFarm() {
         << "Number of Chickens: " << numChickens << endl
         << "Numbers Sheep: " << numSheep << endl
         << "Number of Goats: " << numGoats << endl
-        << "Number of Cows: " << numCows << endl
+        << "Number of Cows: " << numCows << endl << endl
 
         << "Crops\n"
         << "Units of Wheat: " << numWheat << endl
         << "Units of Carrots: " << numCarrots << endl
         << "Units of Potatoes: " << numPotatos << endl
-        << "Units of Watermelon: " << numWatermelons << endl;
+        << "Units of Watermelon: " << numWatermelons << endl << endl;
     
     cout << "Inventory\n";
     inventory.summariseInventory();
 
-    cout << "Payroll\n";
+    cout << "\nPayroll\n";
     showPayroll();
 }
 
