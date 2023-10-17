@@ -14,23 +14,27 @@ int main(void) {
 
     Farm farm(name);
 
-    cout << "Welcome to " << farm.get_name() << "!\nHere is a summary of your farm at the moment.\n\n";
+    cout << "\nWelcome to " << farm.get_name() << "!\nHere is a summary of your farm at the moment.\n\n";
     farm.summariseFarm();
+    cout << endl;
     
     bool gameOver = false;
     bool success;
     int daysElapsed = 0;
     int choice;
+    bool endDay;
 
 
     while (gameOver != true) {
-        cout << "It is day 0.\n";
+        cout << "\n\nIT IS NOW DAY " << daysElapsed << ".\n";
+        endDay = false;
 
         for (int i = 0; i < 5; i++) {
+            if (gameOver || endDay) {break;}
 
-            cout << "You have " << 5-i << " actions left today.\n";
+            cout << "\nYou have " << 5-i << " actions left today.\n";
 
-            cout << "    1. See information\n    2. Purchase commodity\n   3. Harvest crop\n    4. Manage employees\n   5. Manage inventory\n   6. End day\n   7. End game\n";
+            cout << "   1. See information\n   2. Purchase commodity\n   3. Harvest crops\n   4. Manage employees\n   5. Manage inventory\n   6. End day\n   7. End game\n";
             cout << "What action do you wish to perform (enter number associated with that action): ";
             cin >> choice;
             while (choice < 1 || choice > 7) {
@@ -40,10 +44,10 @@ int main(void) {
 
             switch (choice) {
                 case 1:
-                    cout << "What do you wish to see?\n   1. Whole farm summary\n   2. Payroll\n   3. Inventory\n Enter action: ";
+                    cout << "What do you wish to see?\n   1. Whole farm summary\n   2. Payroll\n   3. Inventory\n   4. Bank Account\nEnter action: ";
                     cin >> choice;
-                    while (choice < 1 || choice > 3) {
-                        cout << "Invalid input. Please enter an integer between 1 and 3, inclusive: ";
+                    while (choice < 1 || choice > 4) {
+                        cout << "Invalid input. Please enter an integer between 1 and 4, inclusive: ";
                         cin >> choice;
                     }
 
@@ -56,6 +60,9 @@ int main(void) {
                             break;
                         case 3:
                             farm.inventory.summariseInventory();
+                            break;
+                        case 4:
+                            cout << "\nBank Account - $" << farm.get_bankAccount() << endl;
                             break;
                     }
                     
@@ -177,16 +184,168 @@ int main(void) {
 
                     break;
                 case 3:
-                    
+                    cout << "Which crop do you wish to sell?\n   1. Wheat\n   2. Carrot\n   3. Potato\n   4. Watermelon\n";
+                    cout << "Enter desired crop: ";
+                    cin >> choice;
+
+                    while (choice < 1 || choice > 4) {
+                        cout << "Invalid input. Please enter an integer between 1 and 4, inclusive: ";
+                        cin >> choice;
+                    }
+
+                    switch (choice) {
+                        case 1:
+                            cout << "Which wheat crop patch?\n";
+                            farm.summariseCrop(farm.get_wheat(), farm.get_numWheat());
+
+                            cout << "Enter number of desired crop: ";
+                            cin >> choice;
+
+                            while (choice < 0 || choice >= farm.get_numWheat()) {
+                                cout << "Invalid input. Please enter a number between 0 and " << farm.get_numWheat() << ", inclusive: ";
+                                cin >> choice;
+                            }
+
+                            success = farm.sellCrop(farm.get_wheat(), choice, farm.get_numWheat());
+
+                            break;
+                        case 2:
+                            cout << "Which carrot crop patch?\n";
+                            farm.summariseCrop(farm.get_carrots(), farm.get_numCarrots());
+
+                            cout << "Enter number of desired crop: ";
+                            cin >> choice;
+
+                            while (choice < 0 || choice >= farm.get_numCarrots()) {
+                                cout << "Invalid input. Please enter a number between 0 and " << farm.get_numCarrots() << ", inclusive: ";
+                                cin >> choice;
+                            }
+
+                            success = farm.sellCrop(farm.get_carrots(), choice, farm.get_numCarrots());
+
+                            break;
+                        case 3:
+                            cout << "Which potato crop patch?\n";
+                            farm.summariseCrop(farm.get_potatos(), farm.get_numPotatos());
+
+                            cout << "Enter number of desired crop: ";
+                            cin >> choice;
+
+                            while (choice < 0 || choice > farm.get_numPotatos()) {
+                                cout << "Invalid input. Please enter a number between 0 and " << farm.get_numPotatos() << ", inclusive: ";
+                                cin >> choice;
+                            }
+
+                            success = farm.sellCrop(farm.get_potatos(), choice, farm.get_numPotatos());
+
+                            break;
+                        case 4:
+                            cout << "Which watermelon crop patch?\n";
+                            farm.summariseCrop(farm.get_watermelons(), farm.get_numWatermelons());
+
+                            cout << "Enter number of desired crop: ";
+                            cin >> choice;
+
+                            while (choice < 0 || choice > farm.get_numWatermelons()) {
+                                cout << "Invalid input. Please enter a number between 0 and " << farm.get_numWatermelons() << ", inclusive: ";
+                                cin >> choice;
+                            }
+
+                            success = farm.sellCrop(farm.get_watermelons(), choice, farm.get_numWatermelons());
+
+                            break;
+                    }
+
+                    break;
                 case 4:
+                    cout << "How do you wish to manage employees?\n   1. Hire\n";
+                    cout << "Enter action: ";
+                    cin >> choice;
+
+                    while (choice != 1) {
+                        cout << "Invalid input. Please enter 1: ";
+                        cin >> choice;
+                    }
+
+                    if (choice == 1) {
+                        cout << "What should this employee be named: ";
+                        string empName;
+                        cin >> empName;
+                        success = farm.hireEmployee(empName);
+                        if (success) {
+                            cout << empName << " hired!\n";
+                        } else {
+                            cout << empName << " rejected your offer.\n";
+                        }
+                    }
+
+                    break;
                 case 5:
+                    cout << "What do you wish to do:\n   1. Sell collectibles\n   2. Buy Feed\nEnter action: ";
+                    cin >> choice;
+
+                    while (choice < 1 || choice > 2) {
+                        cout << "Invalid input. Please enter integer between 1 and 2, inclusive: ";
+                        cin >> choice;
+                    }
+
+                    if (choice == 1) {
+                        int increment = 0;
+                        increment += (farm.inventory.get_numEggs()*2 + farm.inventory.get_numWool()*10 + farm.inventory.get_numCheese()*6 + farm.inventory.get_numMilk()*5);
+                        farm.set_bankAccount(farm.get_bankAccount() + increment);
+                    } else {
+                        int feedAmount;
+                        cout << "How much feed: ";
+                        cin >> feedAmount;
+                        farm.inventory.buyFeed(feedAmount);
+                        farm.set_bankAccount(farm.get_bankAccount() - feedAmount);
+                    }
+
+                    break;
                 case 6:
+                    cout << "Ok! Ending day...\n";
+                    endDay = true;
+                    break;
                 case 7:
+                    cout << "Are you sure you wish to end game (0 for no, 1 for yes)? ";
+                    cin >> choice;
+                    if (choice == 1) {
+                        gameOver = true;
+                    }
+
+                    break;
             }
+        }
+
+        farm.inventory.increase_numEggs(farm.get_numChickens()*2);
+        farm.inventory.increase_numWool(farm.get_numSheep());
+        farm.inventory.increase_numCheese(farm.get_numGoats()*5);
+        farm.inventory.increase_numMilk(farm.get_numCows()*8);
+
+
+
+        farm.increaseValues();
+        daysElapsed++;
+
+        farm.set_bankAccount(farm.get_bankAccount()-(farm.get_numEmployees()*100));
+        if (farm.get_bankAccount() < 0) {
+            cout << "Oh no! Your account balance is $" << farm.get_bankAccount() 
+                << " which means you have gone bankrupt. Your farm has now been taken from you.\n";
+            break;
         }
     }
 
+    cout << "Thank you for playing Farming Simulator.\n";
+    cout << "Do you wish to save a record of your results (no - 0, yes - 1)? ";
+    cin >> choice;
 
+    cout << "Ok!\n";
+    if (choice == 1) {
+        farm.saveData();
+        cout << "Data saved to FarmInfo.txt\n";
+    }
 
+    cout << "GAME OVER\n";
+    
     return 0;
 }

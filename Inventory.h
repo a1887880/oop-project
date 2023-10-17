@@ -31,6 +31,11 @@ class Inventory {
         int get_numMilk();
         int get_animalFeed();
 
+        void increase_numEggs(int num);
+        void increase_numWool(int num);
+        void increase_numCheese(int num);
+        void increase_numMilk(int num);
+
         void buyFeed(int quantity);
 
         void emptyCrops();

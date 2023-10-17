@@ -1,0 +1,8 @@
+Farm Summary
+Farm Name: ryans-farm
+Value: 10000000
+Land Area: 1000
+Bank Account: 10
+Number of Animals: 1
+Number of Crops: 0
+Number of Employees: 0

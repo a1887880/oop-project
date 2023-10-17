@@ -47,7 +47,33 @@ class Farm {
         Farm(string name);
         Farm();
 
+        int get_bankAccount();
+
         string get_name();
+        int get_numChickens();
+        int get_numSheep();
+        int get_numGoats();
+        int get_numCows();
+        int get_numWheat();
+        int get_numCarrots();
+        int get_numPotatos();
+        int get_numWatermelons();
+
+        int get_numEmployees();
+
+        Chicken *get_chickens();
+        Sheep *get_sheep();
+        Goat *get_goats();
+        Cow *get_cows();
+        Wheat *get_wheat();
+        Carrot *get_carrots();
+        Potato *get_potatos();
+        Watermelon *get_watermelons();
+        Employee *get_employees();   
+
+        void set_bankAccount(int newValue);   
+
+        void summariseCrop(Crop* crops, int numCrops); 
        
         bool buyLand();
 

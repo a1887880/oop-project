@@ -37,7 +37,39 @@ Farm::Farm(string name) {
 
 Farm::Farm() : Farm("") {}
 
+int Farm::get_bankAccount() {return bankAccout;}
+
 string Farm::get_name() {return name;}
+int Farm::get_numChickens() {return numChickens;}
+int Farm::get_numSheep() {return numSheep;}
+int Farm::get_numGoats() {return numGoats;}
+int Farm::get_numCows() {return numCows;}
+int Farm::get_numWheat() {return numWheat;}
+int Farm::get_numCarrots() {return numCarrots;}
+int Farm::get_numPotatos() {return numPotatos;}
+int Farm::get_numWatermelons() {return numWatermelons;}
+
+int Farm::get_numEmployees() {return numEmployees;}
+
+Chicken* Farm::get_chickens() {return chickens;}
+Sheep* Farm::get_sheep() {return sheep;}
+Goat* Farm::get_goats() {return goats;}
+Cow* Farm::get_cows() {return cows;}
+Wheat* Farm::get_wheat() {return wheat;}
+Carrot* Farm::get_carrots() {return carrots;}
+Potato* Farm::get_potatos() {return potatos;}
+Watermelon* Farm::get_watermelons() {return watermelons;}
+Employee* Farm::get_employees() {return employees;}
+
+void Farm::set_bankAccount(int newValue) {bankAccout = newValue;}
+
+void Farm::summariseCrop(Crop* crops, int numCrops) {
+    cout << "Crop number | Value | stage of life / max stages\n";
+    for (int i = 0; i < numCrops; i++) {
+        cout << i << " | " << crops[i].get_value() << " | " 
+            << crops[i].get_stageOfLife() << "/" << crops[i].get_maxLifeStage() << endl;
+    }
+}
 
 bool Farm::buyLand() {
     if (bankAccout > 10000000) {
@@ -196,38 +228,39 @@ bool Farm::sellCrop(Crop* crop, int n, int numCrops) {
 }
 
 void Farm::increaseValues() {
+    int newValue;
     for (int i = 0; i < numChickens; i++) {
-        int newValue = chickens[i].get_value() + 1;
+        newValue = chickens[i].get_value() + 1;
         chickens[i].set_value(newValue);
     }
     for (int i = 0; i < numSheep; i++) {
-        int newValue = sheep[i].get_value() + 2;
+        newValue = sheep[i].get_value() + 2;
         sheep[i].set_value(newValue);
     }
     for (int i = 0; i < numGoats; i++) {
-        int newValue = goats[i].get_value() + 3;
+        newValue = goats[i].get_value() + 3;
         goats[i].set_value(newValue);
     }
     for (int i = 0; i < numCows; i++) {
-        int newValue = cows[i].get_value() + 4;
+        newValue = cows[i].get_value() + 4;
         cows[i].set_value(newValue);
     }  
 
     for (int i = 0; i < numWheat; i++) {
-        int newValue = wheat[i].get_value() + 3;
+        newValue = wheat[i].get_value() + 3;
         wheat[i].set_value(newValue);
     }
     for (int i = 0; i < numCarrots; i++) {
-        int newValue = carrots[i].get_value() + 6;
+        newValue = carrots[i].get_value() + 6;
         carrots[i].set_value(newValue);
     }
     for (int i = 0; i < numPotatos; i++) {
-        int newValue = potatos[i].get_value() + 10;
+        newValue = potatos[i].get_value() + 10;
         potatos[i].set_value(newValue);
     }
-    for (int i = 0; i < numCows; i++) {
-        int newValue = cows[i].get_value() + 20;
-        cows[i].set_value(newValue);
+    for (int i = 0; i < numWatermelons; i++) {
+        newValue = watermelons[i].get_value() + 20;
+        watermelons[i].set_value(newValue);
     }       
 }
 
