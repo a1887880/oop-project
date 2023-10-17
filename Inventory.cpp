@@ -24,6 +24,12 @@ int Inventory::get_numCheese() {return numCheese;}
 int Inventory::get_numMilk() {return numMilk;}
 int Inventory::get_animalFeed() {return animalFeed;}
 
+void Inventory::increase_numEggs(int num) {numEggs += num;}
+void Inventory::increase_numWool(int num) {numWool += num;}
+void Inventory::increase_numCheese(int num) {numCheese += num;}
+void Inventory::increase_numMilk(int num) {numMilk += num;}
+
+
 void Inventory::buyFeed(int quantity) {
     animalFeed += quantity;
 } 
@@ -47,9 +53,5 @@ void Inventory::summariseInventory() {
         << "Units of Wool: " << numWool << endl
         << "Units of Cheese: " << numCheese << endl
         << "Units of Milk: " << numMilk << endl
-        << "Units of Wheat: " << numWheat << endl
-        << "Units of Carrots: " << numCarrots << endl
-        << "Units of Potatos: " << numPotatos << endl
-        << "Units of Watermelons: " << numWatermelons << endl
         << "Units of Animal Feed: " << animalFeed << endl;
 }
