@@ -78,6 +78,7 @@ bool Farm::buyLand() {
     // expands land area if bank account is large enough
     if (bankAccout > 10000000) {
         landArea += 10000;
+        bankAccout -= 10000000;
         
         return true;
     } else {
