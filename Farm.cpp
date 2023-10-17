@@ -176,13 +176,15 @@ bool Farm::buyCow(string name) {
 }
 
 bool Farm::sellAnimal(Animal *animal, int n, int numAnimals) {
+    // checks there is animal to sell
     if (numAnimals > 0) {
-        bankAccout += animal[n].get_value();
+        bankAccout += animal[n].get_value(); // adds value to bank account
 
+        // shuffles array to remove unwanted animal
         for (int i = n; i < numAnimals-1; i++) {
             animal[n] = animal[n+1];
         }
-        numAnimals -= 1;
+        numAnimals -= 1; // decreases count
 
         return true;
     } else {
@@ -191,11 +193,12 @@ bool Farm::sellAnimal(Animal *animal, int n, int numAnimals) {
 }
 
 bool Farm::buyWheat() {
+    // executes given sufficient conditions 
     if (bankAccout > 15 && numWheat < maxPerCrop) {
-        Wheat W;
-        wheat[numWheat] = W;
-        numWheat++;
-        bankAccout -= 15;
+        Wheat W; // instantiates wheat object
+        wheat[numWheat] = W; // adds wheat object to array
+        numWheat++; // increases count
+        bankAccout -= 15; // subtracts cost of wheat
         return true;
     } else {
         return false;
@@ -203,11 +206,12 @@ bool Farm::buyWheat() {
 }
 
 bool Farm::buyCarrots() {
+    // executes given sufficient conditions
     if (bankAccout > 40 && numCarrots < maxPerCrop) {
-        Carrot carrot;
-        carrots[numCarrots] = carrot;
-        numCarrots++;
-        bankAccout -= 40;
+        Carrot carrot; // instantiates carrot
+        carrots[numCarrots] = carrot; // adds carrot to array
+        numCarrots++; // increases count
+        bankAccout -= 40; // subtracts cost
         return true;
     } else {
         return false;
@@ -216,10 +220,10 @@ bool Farm::buyCarrots() {
 
 bool Farm::buyPotatos() {
     if (bankAccout > 70 && numPotatos < maxPerCrop) {
-        Potato potato;
-        potatos[numPotatos] = potato;
-        numPotatos++;
-        bankAccout -= 70;
+        Potato potato; // instantiates potato
+        potatos[numPotatos] = potato; // adds potato to array
+        numPotatos++; // increases count
+        bankAccout -= 70; // subtracts cost
         return true;
     } else {
         return false;
@@ -228,10 +232,10 @@ bool Farm::buyPotatos() {
 
 bool Farm::buyWatermelons() {
     if (bankAccout > 150 && numWatermelons < maxPerCrop) {
-        Watermelon watermelon;
-        watermelons[numWatermelons] = watermelon;
-        numWatermelons++;
-        bankAccout -= 150;
+        Watermelon watermelon; // instantiates watermelon
+        watermelons[numWatermelons] = watermelon; // adds watermelon to array
+        numWatermelons++; // increases count
+        bankAccout -= 150; // subtracts cost
         return true;
     } else {
         return false;
@@ -239,13 +243,15 @@ bool Farm::buyWatermelons() {
 }
 
 bool Farm::sellCrop(Crop* crop, int n, int numCrops) {
+    // checks there is crop to sell
     if (numCrops > 0) {
-        bankAccout += crop[n].get_value();
+        bankAccout += crop[n].get_value(); // adds value of crop to bank account
 
+        // reshuffles array to remove crop
         for (int i = n; i < numCrops-1; i++) {
-            crop[n] = crop[n+1];
+            crop[i] = crop[i+1];
         }
-        numCrops -= 1;
+        numCrops -= 1; // decreases count
 
         return true;
     } else {
@@ -254,36 +260,44 @@ bool Farm::sellCrop(Crop* crop, int n, int numCrops) {
 }
 
 void Farm::increaseValues() {
-    int newValue;
+    int newValue; // declares newValue used in each loop
+
+    // increases value of each chicken
     for (int i = 0; i < numChickens; i++) {
         newValue = chickens[i].get_value() + 1;
         chickens[i].set_value(newValue);
     }
+    // increases value of each sheep
     for (int i = 0; i < numSheep; i++) {
         newValue = sheep[i].get_value() + 2;
         sheep[i].set_value(newValue);
     }
+    // increases value of each goat
     for (int i = 0; i < numGoats; i++) {
         newValue = goats[i].get_value() + 3;
         goats[i].set_value(newValue);
     }
+    // increases value of each cow
     for (int i = 0; i < numCows; i++) {
         newValue = cows[i].get_value() + 4;
         cows[i].set_value(newValue);
     }  
-
+    // increases value of each wheat
     for (int i = 0; i < numWheat; i++) {
         newValue = wheat[i].get_value() + 3;
         wheat[i].set_value(newValue);
     }
+    // increases vcalue of each carrot
     for (int i = 0; i < numCarrots; i++) {
         newValue = carrots[i].get_value() + 6;
         carrots[i].set_value(newValue);
     }
+    // increases value of each potato
     for (int i = 0; i < numPotatos; i++) {
         newValue = potatos[i].get_value() + 10;
         potatos[i].set_value(newValue);
     }
+    // increases value of each watermelon
     for (int i = 0; i < numWatermelons; i++) {
         newValue = watermelons[i].get_value() + 20;
         watermelons[i].set_value(newValue);
@@ -291,36 +305,44 @@ void Farm::increaseValues() {
 }
 
 void Farm::ageCommodities() {
+    // ages chickens
     for (int i = 0; i < numChickens; i++) {
         chickens[i].grow();
     }
+    // ages sheep
     for (int i = 0; i < numSheep; i++) {
         sheep[i].grow();
     }
+    // ages goats
     for (int i = 0; i < numGoats; i++) {
         goats[i].grow();        
     }
+    // ages cows
     for (int i = 0; i < numCows; i++) {
         cows[i].grow();
     }  
-
+    // ages wheat
     for (int i = 0; i < numWheat; i++) {
         wheat[i].grow();
     }
+    // ages carrots
     for (int i = 0; i < numCarrots; i++) {
         carrots[i].grow();
     }
+    // ages potatoes
     for (int i = 0; i < numPotatos; i++) {
         potatos[i].grow();
     }
+    // ages watermelons
     for (int i = 0; i < numWatermelons; i++) {
         watermelons[i].grow();
     }  
 }
 
 void Farm::terminateAgedCommodities() {
-    bool success;
+    bool success; // declares boolean value
 
+    // terminates any chickens thatres too old
     for (int i = 0; i < numChickens; i++) {
         if (chickens[i].get_stageOfLife() >= chickens[i].get_maxLifeStage()) {
             success = sellAnimal(chickens, i, numChickens);
@@ -329,6 +351,7 @@ void Farm::terminateAgedCommodities() {
             }
         }
     }
+    // terminates any sheep too old
     for (int i = 0; i < numSheep; i++) {
         if (sheep[i].get_stageOfLife() >= sheep[i].get_maxLifeStage()) {
             success = sellAnimal(sheep, i, numSheep);
@@ -337,6 +360,7 @@ void Farm::terminateAgedCommodities() {
             }
         }
     }
+    // terminates any goats necessaary
     for (int i = 0; i < numGoats; i++) {
         if (goats[i].get_stageOfLife() >= goats[i].get_maxLifeStage()) {
             success = sellAnimal(goats, i, numGoats);
@@ -345,6 +369,7 @@ void Farm::terminateAgedCommodities() {
             }
         }       
     }
+    // terminates any cows necessary
     for (int i = 0; i < numCows; i++) {
         if (cows[i].get_stageOfLife() >= cows[i].get_maxLifeStage()) {
             success = sellAnimal(cows, i, numCows);
@@ -353,7 +378,7 @@ void Farm::terminateAgedCommodities() {
             }
         }  
     }  
-
+    // terminates any wheat necessary
     for (int i = 0; i < numWheat; i++) {
         if (wheat[i].get_stageOfLife() >= wheat[i].get_maxLifeStage()) {
             success = sellCrop(wheat, i, numWheat);
@@ -362,6 +387,7 @@ void Farm::terminateAgedCommodities() {
             }
         }  
     }
+    // terminates any carrots necessary
     for (int i = 0; i < numCarrots; i++) {
         if (carrots[i].get_stageOfLife() >= carrots[i].get_maxLifeStage()) {
             success = sellCrop(carrots, i, numCarrots);
@@ -370,6 +396,7 @@ void Farm::terminateAgedCommodities() {
             }
         }  
     }
+    // terminates any potatoes necessary
     for (int i = 0; i < numPotatos; i++) {
         if (potatos[i].get_stageOfLife() >= potatos[i].get_maxLifeStage()) {
             success = sellCrop(potatos, i, numPotatos);
@@ -378,6 +405,7 @@ void Farm::terminateAgedCommodities() {
             }
         }  
     }
+    // terminates any watermelon necessary
     for (int i = 0; i < numWatermelons; i++) {
         if (watermelons[i].get_stageOfLife() >= watermelons[i].get_maxLifeStage()) {
             success = sellCrop(watermelons, i, numWatermelons);
@@ -389,7 +417,8 @@ void Farm::terminateAgedCommodities() {
 }
 
 void Farm::summariseFarm() {
-    cout << "General Information" << endl 
+    // generates summary message for whole farm
+    cout << "General Information" << endl
         << "Farm Name: " << name << endl 
         << "Value: " << value << endl
         << "Land Area: " << landArea << endl
@@ -407,16 +436,19 @@ void Farm::summariseFarm() {
         << "Units of Potatoes: " << numPotatos << endl
         << "Units of Watermelon: " << numWatermelons << endl << endl;
     
+    // generates summary of inventory
     cout << "Inventory\n";
     inventory.summariseInventory();
 
+    // generates summary of employees
     cout << "\nPayroll\n";
     showPayroll();
 }
 
 void Farm::saveData() {
-    ofstream file("FarmInfo.txt");
+    ofstream file("FarmInfo.txt"); // opens file that will store game data
 
+    // writes the following to file
     file << "Farm Summary" << endl 
         << "Farm Name: " << name << endl 
         << "Value: " << value << endl
@@ -426,11 +458,12 @@ void Farm::saveData() {
         << "Number of Crops: " << numWheat+numCarrots+numPotatos+numWatermelons << endl
         << "Number of Employees: " << numEmployees << endl;
 
-
+    // closes file
     file.close();
 }
 
 Farm::~Farm() {
+    // deallocates each dynamic array that is apart of farm
     delete[] chickens;
     delete[] sheep;
     delete[] goats;
