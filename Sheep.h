@@ -12,6 +12,7 @@ class Sheep : public Animal {
  public:
   // Constructor for the "Sheep" class
   Sheep(string name);
+  Sheep();
 
   // Getter and setter methods for the "woolProductionRate" member variable
   int get_woolProductionRate();

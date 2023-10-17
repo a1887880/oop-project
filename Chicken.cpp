@@ -4,6 +4,8 @@ Chicken::Chicken(string name) : Animal(20, name, "Chicken", 1) {
   eggProductionRate = 1;
 }
 
+Chicken::Chicken() : Chicken("") {}
+
 int Chicken::get_eggProductionRate() { return eggProductionRate; }
 void Chicken::set_eggProductionRate(int newRate) {
   eggProductionRate = newRate;

@@ -12,6 +12,7 @@ class Chicken : public Animal {
  public:
   // Constructor for the "Chicken" class
   Chicken(string name);
+  Chicken();
 
   // Getter and setter methods for the "eggProductionRate" member variable
   int get_eggProductionRate();
