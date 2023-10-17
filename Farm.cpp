@@ -92,6 +92,20 @@ bool Farm::hireEmployee(string name) {
     }
 }
 
+bool Farm::fireEmployee(int empIndex) {
+    if (numEmployees > 0) {
+
+        for (int i = empIndex-1; i < numEmployees-1; i++) {
+            employees[i] = employees[i+1];
+        }
+        numEmployees -= 1;
+
+        return true;
+    } else {
+        return false;
+    }
+}
+
 void Farm::showPayroll() {
     cout << "Number of Employees: " << numEmployees << endl;
     for (int i = 0; i < numEmployees; i++) {

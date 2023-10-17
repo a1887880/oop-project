@@ -1,6 +1,6 @@
 #ifndef FARM_H
 #define FARM_H
-
+// includes necessary files
 #include <iostream>
 #include <fstream>
 
@@ -16,20 +16,21 @@
 #include "Employee.h"
 #include "Inventory.h"
 
+// declares farm class
 class Farm {
     private:
-        string name;
+        string name; // name of farm
         int landArea; // in hectares
-        int value;
-        int bankAccout;
+        int value; // value of farm in dollars
+        int bankAccout; // in dollars
 
-        int numChickens, numSheep, numGoats, numCows;
-        int numWheat, numCarrots, numPotatos, numWatermelons;
-        int numEmployees;
+        int numChickens, numSheep, numGoats, numCows; // number of each individual animals belonging to the farm 
+        int numWheat, numCarrots, numPotatos, numWatermelons; // number units of each crop belonging to the farm
+        int numEmployees; // number of employees currently employed by farm
 
-        int maxPerAnimal, maxPerCrop, maxEmployees;
+        int maxPerAnimal, maxPerCrop, maxEmployees; // max number of classes the farm can currently hold
 
-
+        // Pointers to what will be dynamic arrays holding multiple instances of their particular object
         Chicken *chickens;
         Sheep *sheep;
         Goat *goats;
@@ -42,13 +43,14 @@ class Farm {
 
         Employee *employees;
     public:
-        Inventory inventory;
-
+        Inventory inventory; // Individual inventory object (1 per farm)
+        
+        // constructors
         Farm(string name);
         Farm();
 
+        // getters
         int get_bankAccount();
-
         string get_name();
         int get_numChickens();
         int get_numSheep();
@@ -58,9 +60,7 @@ class Farm {
         int get_numCarrots();
         int get_numPotatos();
         int get_numWatermelons();
-
         int get_numEmployees();
-
         Chicken *get_chickens();
         Sheep *get_sheep();
         Goat *get_goats();
@@ -69,25 +69,26 @@ class Farm {
         Carrot *get_carrots();
         Potato *get_potatos();
         Watermelon *get_watermelons();
-        Employee *get_employees();   
+        Employee *get_employees();
 
-        void set_bankAccount(int newValue);   
 
-        void summariseCrop(Crop* crops, int numCrops); 
+        void set_bankAccount(int newValue);   // sets bank account to newValue
+
+        void summariseCrop(Crop* crops, int numCrops);  // summarises particular crop array
        
-        bool buyLand();
+        bool buyLand(); // increases land area
 
-        bool hireEmployee(string name);
-        //bool fireEmployee();
-        void showPayroll();
+        bool hireEmployee(string name); // adds employee to array
+        bool fireEmployee(int); // removes employee from array
+        void showPayroll(); // summarises all employees currently hired
 
-        bool buyChicken(string name);
-        bool buySheep(string name);
-        bool buyGoat(string name);
-        bool buyCow(string name);
-        bool sellAnimal(Animal *animal, int n, int numAnimal);
-
-        bool buyWheat();
+        bool buyChicken(string name); // adds chicken to array
+        bool buySheep(string name); // adds sheep to array
+        bool buyGoat(string name); // adds goat to array
+        bool buyCow(string name); // adds cow to array
+        bool sellAnimal(Animal *animal, int n, int numAnimal); // removes animal from array for profit
+        
+        bool buyWheat(); // adds wheat to array
         bool buyCarrots();
         bool buyPotatos();
         bool buyWatermelons();

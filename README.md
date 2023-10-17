@@ -1,2 +1,1 @@
-# oop-project
-Group project
+# oop-s1-2023
